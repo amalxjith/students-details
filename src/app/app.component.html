@@ -1,4 +1,5 @@
-<div class="students-record">
+<students-details-side-bar [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></students-details-side-bar>
+<div class="students-record" [ngClass]="{'sidebarExpanded': sidebarExpanded}">
   <form action="">
     <div class="mb-3 row">
       <label for="">Search Text</label>
@@ -7,7 +8,7 @@
         </div>
     </div>
   </form>
-  <table class="table table-striped">
+  <table class="table table-striped students-record__record-table">
     <thead>
       <tr>
         <th>#</th>

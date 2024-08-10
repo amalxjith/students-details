@@ -3,28 +3,43 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule, FormControl, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
-
+import { SideBarComponent } from './side-bar/side-bar.component';
+interface Student {
+    name: string;
+    city: string;
+    studentImage: string;
+    state: string;
+    country: string;
+    physics: string;
+    chemistry: string;
+    maths: string;
+    computer: string;
+}
 @Component({
     selector: 'students-details-root',
     standalone: true,
-    imports: [CommonModule, RouterOutlet,FormsModule, ReactiveFormsModule,NgbHighlight],
+    imports: [CommonModule, RouterOutlet,FormsModule, ReactiveFormsModule,NgbHighlight, SideBarComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
+
 export class AppComponent {
     title = 'student-details';
     filter: FormControl;
-    students: Array<any> = [
+
+    sidebarExpanded:boolean = true;
+
+    students: Array<Student> = [
         {
             name:'John Doe',
             city:'Dublin',
             studentImage:'https://avatar.iran.liara.run/public/1',
             state:'BN',
             country:'Ireland',
-            physics:26,
-            chemistry:22,
-            maths:30,
-            computer:29
+            physics:'26',
+            chemistry:'22',
+            maths:'30',
+            computer:'29'
         },
         {
             name:'Peter Neil',
@@ -32,10 +47,10 @@ export class AppComponent {
             studentImage:'https://avatar.iran.liara.run/public/2',
             state:'MD',
             country:'Sao Tome and Principe',
-            physics:0,
-            chemistry:23,
-            maths:23,
-            computer:23
+            physics:'0',
+            chemistry:'23',
+            maths:'23',
+            computer:'23'
         },
         {
             name:'Peter Zulauf',
@@ -43,10 +58,10 @@ export class AppComponent {
             studentImage:'https://avatar.iran.liara.run/public/3',
             state:'MA',
             country:'Netherlands',
-            physics:2,
-            chemistry:17,
-            maths:19,
-            computer:8
+            physics:'2',
+            chemistry:'17',
+            maths:'19',
+            computer:'8'
         },
         {
             name:'Sally Mackenzie',
@@ -54,10 +69,10 @@ export class AppComponent {
             studentImage:'https://avatar.iran.liara.run/public/4',
             state:'VT',
             country:'Mexico',
-            physics:21,
-            chemistry:5,
-            maths:25,
-            computer:13
+            physics:'21',
+            chemistry:'5',
+            maths:'25',
+            computer:'13'
         },
         {
             name:'Gregg paucek',
@@ -65,10 +80,10 @@ export class AppComponent {
             studentImage:'https://avatar.iran.liara.run/public/5',
             state:'NJ',
             country:'Bhutan',
-            physics:21,
-            chemistry:14,
-            maths:2,
-            computer:10
+            physics:'21',
+            chemistry:'14',
+            maths:'2',
+            computer:'10'
         },
         {
             name: 'Alice Brown',
@@ -76,10 +91,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/6',
             state: 'NY',
             country: 'Italy',
-            physics: 20,
-            chemistry: 25,
-            maths: 28,
-            computer: 30
+            physics: '20',
+            chemistry: '25',
+            maths: '28',
+            computer: '30'
         },
         {
             name: 'Bob Smith',
@@ -87,10 +102,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/7',
             state: 'CA',
             country: 'Italy',
-            physics: 15,
-            chemistry: 20,
-            maths: 22,
-            computer: 27
+            physics: '15',
+            chemistry: '20',
+            maths: '22',
+            computer: '27'
         },
         {
             name: 'Charlie Davis',
@@ -98,10 +113,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/8',
             state: 'TX',
             country: 'USA',
-            physics: 18,
-            chemistry: 24,
-            maths: 26,
-            computer: 29
+            physics: '18',
+            chemistry: '24',
+            maths: '26',
+            computer: '29'
         },
         {
             name: 'Diana Evans',
@@ -109,10 +124,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/9',
             state: 'AZ',
             country: 'Germany',
-            physics: 22,
-            chemistry: 26,
-            maths: 30,
-            computer: 28
+            physics: '22',
+            chemistry: '26',
+            maths: '30',
+            computer: '28'
         },
         {
             name: 'Ethan Foster',
@@ -120,10 +135,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/10',
             state: 'PA',
             country: 'Germany',
-            physics: 19,
-            chemistry: 23,
-            maths: 25,
-            computer: 26
+            physics: '19',
+            chemistry: '23',
+            maths: '25',
+            computer: '26'
         },
         {
             name: 'Fiona Green',
@@ -131,10 +146,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/11',
             state: 'TX',
             country: 'Germany',
-            physics: 21,
-            chemistry: 27,
-            maths: 28,
-            computer: 29
+            physics: '21',
+            chemistry: '27',
+            maths: '28',
+            computer: '29'
         },
         {
             name: 'George Harris',
@@ -142,10 +157,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/26',
             state: 'CA',
             country: 'England',
-            physics: 16,
-            chemistry: 22,
-            maths: 24,
-            computer: 25
+            physics: '16',
+            chemistry: '22',
+            maths: '24',
+            computer: '25'
         },
         {
             name: 'Hannah Jackson',
@@ -153,10 +168,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/32',
             state: 'TX',
             country: 'Germany',
-            physics: 18,
-            chemistry: 25,
-            maths: 27,
-            computer: 30
+            physics: '18',
+            chemistry: '25',
+            maths: '27',
+            computer: '30'
         },
         {
             name: 'Ian Kelly',
@@ -164,10 +179,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/12',
             state: 'CA',
             country: 'New Zeland',
-            physics: 20,
-            chemistry: 24,
-            maths: 26,
-            computer: 29
+            physics: '20',
+            chemistry: '24',
+            maths: '26',
+            computer: '29'
         },
         {
             name: 'Julia Lewis',
@@ -175,10 +190,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/13',
             state: 'TX',
             country: 'Australia',
-            physics: 19,
-            chemistry: 23,
-            maths: 25,
-            computer: 27
+            physics: '19',
+            chemistry: '23',
+            maths: '25',
+            computer: '27'
         },
         {
             name: 'Kevin Martin',
@@ -186,10 +201,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/14',
             state: 'FL',
             country: 'Bhutan',
-            physics: 15,
-            chemistry: 20,
-            maths: 22,
-            computer: 26
+            physics: '15',
+            chemistry: '20',
+            maths: '22',
+            computer: '26'
         },
         {
             name: 'Laura Nelson',
@@ -197,10 +212,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/15',
             state: 'TX',
             country: 'Australia',
-            physics: 22,
-            chemistry: 27,
-            maths: 29,
-            computer: 30
+            physics: '22',
+            chemistry: '27',
+            maths: '29',
+            computer: '30'
         },
         {
             name: "Michael O'Brien",
@@ -208,10 +223,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/16',
             state: 'OH',
             country: 'Australia',
-            physics: 18,
-            chemistry: 23,
-            maths: 25,
-            computer: 28
+            physics: '18',
+            chemistry: '23',
+            maths: '25',
+            computer: '28'
         },
         {
             name: 'Nina Parker',
@@ -219,10 +234,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/17',
             state: 'NC',
             country: 'India',
-            physics: 20,
-            chemistry: 26,
-            maths: 27,
-            computer: 30
+            physics: '20',
+            chemistry: '26',
+            maths: '27',
+            computer: '30'
         },
         {
             name: 'Oscar Quinn',
@@ -230,10 +245,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/18',
             state: 'CA',
             country: 'India',
-            physics: 16,
-            chemistry: 21,
-            maths: 24,
-            computer: 26
+            physics: '16',
+            chemistry: '21',
+            maths: '24',
+            computer: '26'
         },
         {
             name: 'Paula Roberts',
@@ -241,10 +256,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/19',
             state: 'IN',
             country: 'England',
-            physics: 21,
-            chemistry: 25,
-            maths: 28,
-            computer: 30
+            physics: '21',
+            chemistry: '25',
+            maths: '28',
+            computer: '30'
         },
         {
             name: 'Quentin Scott',
@@ -252,10 +267,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/20',
             state: 'WA',
             country: 'USA',
-            physics: 19,
-            chemistry: 24,
-            maths: 27,
-            computer: 29
+            physics: '19',
+            chemistry: '24',
+            maths: '27',
+            computer: '29'
         },
         {
             name: 'Rachel Thomas',
@@ -263,10 +278,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/21',
             state: 'CO',
             country: 'France',
-            physics: 17,
-            chemistry: 22,
-            maths: 25,
-            computer: 28
+            physics: '17',
+            chemistry: '22',
+            maths: '25',
+            computer: '28'
         },
         {
             name: 'Steven Underwood',
@@ -274,10 +289,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/22',
             state: 'DC',
             country: 'France',
-            physics: 15,
-            chemistry: 20,
-            maths: 23,
-            computer: 25
+            physics: '15',
+            chemistry: '20',
+            maths: '23',
+            computer: '25'
         },
         {
             name: 'Tina Vincent',
@@ -285,10 +300,10 @@ export class AppComponent {
             studentImage: 'https://avatar.iran.liara.run/public/23',
             state: 'MA',
             country: 'France',
-            physics: 22,
-            chemistry: 27,
-            maths: 30,
-            computer: 29
+            physics: '22',
+            chemistry: '27',
+            maths: '30',
+            computer: '29'
         }
     ];
 
